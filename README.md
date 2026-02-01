@@ -25,6 +25,15 @@ To run MediaZipX, you need to have Python installed on your system.
     ```
 3. Launch the python file and Wait for the Setup to Complete Configuring FFmpeg on your System
 4. Enjoy Using MediaZipX
+### Disclaimer
+
+MediaZipX is provided **as-is**. The creator (**CodeR-D-R**) is **not responsible** for:
+
+- Any legal issues arising from downloading copyrighted content.
+- Loss of data, software issues, or system damage caused by using this software.
+- Misuse of MediaZipX in violation of YouTube’s or other platforms’ Terms of Service.
+
+By using MediaZipX, you agree that you do so **at your own risk**.
 
 ## License
 
