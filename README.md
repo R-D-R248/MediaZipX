@@ -35,6 +35,8 @@ MediaZipX is provided **as-is**. The creator (**CodeR-D-R**) is **not responsibl
 
 By using MediaZipX, you agree that you do so **at your own risk**.
 
+YouTube is a trademark of Google LLC. MediaZipX is not affiliated with, endorsed by, or sponsored by YouTube or Google.
+
 ## License
 
 This project is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License**.
