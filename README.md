@@ -19,7 +19,6 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 - Fixed Minor UI Problem in Main menu
 - Added Fixed Extensions instead of Source Extension
 - Better Application Exit
-- 
 ## Installation
 1. Download the Application
 2. Launch the Application and Wait for the Setup to Complete Configuring FFmpeg on your System
