@@ -19,13 +19,9 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 
 To run MediaZipX, you need to have Python installed on your system.
 
-1. Clone or download the repository.
-2. Install required dependencies:
-    ```bash
-    pip install yt-dlp ffmpeg-python colorama requests
-    ```
-3. Launch the python file and Wait for the Setup to Complete Configuring FFmpeg on your System
-4. Enjoy Using MediaZipX
+1. Download the Application
+2. Launch the Application and Wait for the Setup to Complete Configuring FFmpeg on your System
+3. Enjoy Using MediaZipX
 ### Disclaimer
 
 MediaZipX is provided **as-is**. The creator (**CodeR-D-R**) is **not responsible** for:
