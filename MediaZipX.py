@@ -128,7 +128,7 @@ while True:
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestvideo",
-                    "outtmpl": "%(title)s.%(ext)",
+                    "outtmpl": "%(title)s.%(ext)s",
                     "restrictfilenames": True,
                     "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
                     "http_headers": {
@@ -215,3 +215,4 @@ while True:
         print(input("Press Enter to Return to Menu"))
         os.system("cls")
         continue
+
