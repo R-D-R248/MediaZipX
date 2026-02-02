@@ -8,7 +8,7 @@ import ffmpeg
 import re
 import zipfile
 import requests
-
+import sys
 
 init(autoreset=True)
 
@@ -76,9 +76,8 @@ else:
             ffmpeg_bin = os.path.join(save_folder, name, "bin")
             os.environ["PATH"] += os.pathsep + ffmpeg_bin
             break
-    
+    os.remove(save_path)
     print(input("Click Enter to finish Setup"))
-    quit()
     
 def get_ffmpeg_bin(path="C:\\ffmpeg"):
     for name in os.listdir(path):
@@ -92,7 +91,7 @@ ffmpeg_bin = get_ffmpeg_bin()
 while True:
     os.system("cls")
     logof()
-    print(Fore.BLUE + "MediaZipX 1.0")
+    print(Fore.BLUE + "MediaZipX 1.2")
     print("by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
     print("https://github.com/R-D-R248")
     print(Fore.WHITE + Style.DIM + "-"*96)
@@ -103,9 +102,9 @@ while True:
     print(Fore.BLUE + Style.BRIGHT + "[1]Download from YouTube")
     print(Fore.BLUE + Style.BRIGHT + "[2]About")
     print(Fore.RED + "[3]Exit")
-    choice = input("Choose(1-2): ")
+    choice = input("Choose(1-3): ")
     if choice == "3":
-        quit()
+        sys.exit()
     elif choice == "2":
         os.system("cls")
         print(Style.BRIGHT + "About MediaZipX")
@@ -119,15 +118,15 @@ while True:
         while True:
             os.system("cls")
             print(Fore.RED + Style.BRIGHT + "YouTube" + Fore.WHITE + " Downloader")
-            print(Fore.BLUE + Style.BRIGHT + "[1]Video Only")
-            print(Fore.BLUE + Style.BRIGHT + "[2]Audio")
-            print(Fore.BLUE + Style.BRIGHT + "[3]Video(With Audio)")
+            print(Fore.BLUE + Style.BRIGHT + "[1]MP4(No Audio)")
+            print(Fore.BLUE + Style.BRIGHT + "[2]MP3(Audio)")
+            print(Fore.BLUE + Style.BRIGHT + "[3]MP4")
             print(Fore.RED + "[4]Back to Menu")
             choice_a = input("Choose(1-4): ")
             if choice_a == "1":
                 url = input("Enter the URL: ")
                 ydl_opts = {
-                    "format": "bestvideo",
+                    "format": "bestvideo[ext=mp4]/bestvideo",
                     "outtmpl": "%(title)s.%(ext)s",
                     "restrictfilenames": True,
                     "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
@@ -147,7 +146,7 @@ while True:
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestaudio",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": "%(title)s.mp3",
                     "restrictfilenames": True,
                     "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
                     "http_headers": {
@@ -160,6 +159,13 @@ while True:
                     "retries": 10,
                     "continuedl": True,
                     "nocheckcertificate": True,
+                    "postprocessors": [{
+                        "key": "FFmpegExtractAudio",
+                        "preferredcodec": "mp3",
+                        "preferredquality": "192",
+                    }],
+                    "ffmpeg_location": ffmpeg_bin,
+
                 }
             elif choice_a == "3":
                 url = input("Enter the URL:")
@@ -215,4 +221,3 @@ while True:
         print(input("Press Enter to Return to Menu"))
         os.system("cls")
         continue
-
