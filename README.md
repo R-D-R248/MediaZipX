@@ -19,6 +19,14 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 - Fixed Minor UI Problem in Main menu
 - Added Fixed Extensions instead of Source Extension
 - Better Application Exit
+### v1.3
+- Added WAV (High Quality Audio) download option
+- Added FLAC (Best Quality Audio) download option
+- Added MP4 (Compact Video – 720p) option
+- Added MP4 (No Audio / Video Only) option
+- Added Browser selection system to prevent YouTube anti-bot errors using cookies
+- Browser choice is now saved and reused automatically
+
 ## Installation
 1. Download the Application
 2. Launch the Application and Wait for the Setup to Complete Configuring FFmpeg on your System
@@ -34,7 +42,8 @@ MediaZipX is provided **as-is**. The creator (**CodeR-D-R**) is **not responsibl
 By using MediaZipX, you agree that you do so **at your own risk**.
 
 YouTube is a trademark of Google LLC. MediaZipX is not affiliated with, endorsed by, or sponsored by YouTube or Google.
-
+Chrome is a trademark of Google LLC. MediaZipX is not affiliated with, endorsed by, or sponsored by Chrome or Google.
+Edge is a trademark of Microsoft. MediaZipX is not affiliated with, endorsed by, or sponsored by Edge or Microsoft.
 ## License
 
 This project is licensed under the **Creative Commons Attribution-ShareAlike 4.0 International License**.
