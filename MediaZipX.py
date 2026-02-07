@@ -77,6 +77,7 @@ else:
             os.environ["PATH"] += os.pathsep + ffmpeg_bin
             break
     os.remove(save_path)
+    
     print(input("Click Enter to finish Setup"))
     
 def get_ffmpeg_bin(path="C:\\ffmpeg"):
@@ -88,10 +89,18 @@ def get_ffmpeg_bin(path="C:\\ffmpeg"):
 
 ffmpeg_bin = get_ffmpeg_bin()
 
+try:
+    app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
+    data_file = os.path.join(app_folder, "browser.txt")
+    with open(data_file, "r") as f:
+        browser = f.read().strip()
+except:
+    browser = "edge"
+
 while True:
     os.system("cls")
     logof()
-    print(Fore.BLUE + "MediaZipX 1.2")
+    print(Fore.BLUE + "MediaZipX 1.3")
     print("by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
     print("https://github.com/R-D-R248")
     print(Fore.WHITE + Style.DIM + "-"*96)
@@ -101,16 +110,82 @@ while True:
     print(Fore.WHITE + Style.DIM + "-"*96)
     print(Fore.BLUE + Style.BRIGHT + "[1]Download from YouTube")
     print(Fore.BLUE + Style.BRIGHT + "[2]About")
-    print(Fore.RED + "[3]Exit")
+    print(Fore.RED + "[3]Options")
+    print(Fore.RED + "[4]Exit")
     choice = input("Choose(1-3): ")
-    if choice == "3":
+    if choice == "4":
         sys.exit()
+    elif choice == "3":
+        os.system("cls")
+        print(Style.BRIGHT + "Options")
+        print("[1]Choose Browser(for Anti-Bot Error Prevention)")
+        print("[2]Exit to Main Menu")
+        choice_a = input("Choose(1-7): ")
+        while True:
+            if choice_a == "1":
+                while True:
+                    print(Style.BRIGHT + "Browsers")
+                    print("Please Select the Browser You use.")
+                    print(Fore.BLUE + Style.BRIGHT + "[1]Chrome")
+                    print(Fore.BLUE + Style.BRIGHT + "[2]Edge")
+                    print(Fore.BLUE + Style.BRIGHT + "[3]Opera")
+                    print(Fore.BLUE + Style.BRIGHT + "[4]Firefox")
+                    print(Fore.BLUE + Style.BRIGHT + "[5]Brave")
+                    print(Fore.BLUE + Style.BRIGHT + "[6]Chromium")
+                    print(Fore.BLUE + Style.BRIGHT + "[7]Vivaldi")
+                    print(Fore.RED + "[8]Exit Browser Select")
+                    choice_a = input("Choose(1-8): ")
+                    browser = choice_a
+                    app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
+                    os.makedirs(app_folder, exist_ok=True)
+                    data_file = os.path.join(app_folder, "browser.txt")
+                    if browser == "6":
+                        text_to_save = "chromium"
+                    elif browser == "1":
+                        text_to_save = "chrome"
+                    elif browser == "2":
+                        text_to_save = "edge"
+                    elif browser == "3":
+                        text_to_save = "opera"
+                    elif browser == "4":
+                        text_to_save = "firefox"
+                    elif browser == "5":
+                        text_to_save = "brave"
+                    elif browser == "7":
+                        text_to_save = "vivaldi"
+                    elif browser == "8":
+                        break
+                    else:
+                        os.system("cls")
+                        print(Fore.RED + Style.BRIGHT + "Invalid Choice")
+                        print(input("Press Enter to Return to Options"))
+                        os.system("cls")
+                        continue
+                    with open(data_file, "w", encoding="utf-8") as f:
+                        f.write(text_to_save)
+                    print("Your Browser Option has been Saved.\nClick Enter to Return to Options")
+                    print(input())
+                    os.system("cls")
+                    break
+                
+            elif choice_a == "2":
+                break
+            
+            else:
+                os.system("cls")
+                print(Fore.RED + Style.BRIGHT + "Invalid Choice")
+                print(input("Press Enter to Return to Options"))
+                os.system("cls")
+                continue
     elif choice == "2":
         os.system("cls")
         print(Style.BRIGHT + "About MediaZipX")
         print("MediaZipX is a Python-based Media Downloader designed to make Downloading videos and audio easy and accessible.")
         print("Developed " + "by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
         print("YouTube is a trademark of Google LLC. MediaZipX is not affiliated with, endorsed by, or sponsored by YouTube or Google.")
+        print("Chrome is a trademark of Google LLC. MediaZipX is not affiliated with, endorsed by, or sponsored by Chrome or Google.")
+        print("Edge is a trademark of Microsoft. MediaZipX is not affiliated with, endorsed by, or sponsored by Edge or Microsoft.")
+
         print(input("Press Enter to Return to Menu"))
         os.system("cls")
         continue
@@ -118,47 +193,34 @@ while True:
         while True:
             os.system("cls")
             print(Fore.RED + Style.BRIGHT + "YouTube" + Fore.WHITE + " Downloader")
-            print(Fore.BLUE + Style.BRIGHT + "[1]MP4(No Audio)")
-            print(Fore.BLUE + Style.BRIGHT + "[2]MP3(Audio)")
-            print(Fore.BLUE + Style.BRIGHT + "[3]MP4")
-            print(Fore.RED + "[4]Back to Menu")
-            choice_a = input("Choose(1-4): ")
-            if choice_a == "1":
+            print(Fore.BLUE + Style.BRIGHT + "[1]MP4(Best Quality Video)")
+            print(Fore.BLUE + Style.BRIGHT + "[2]MP3(High Quality Audio)")
+            print(Fore.BLUE + Style.BRIGHT + "[3]WAV(High Quality Audio)")
+            print(Fore.BLUE + Style.BRIGHT + "[4]FLAC(Best Quality Audio)")
+            print(Fore.BLUE + Style.BRIGHT + "[5]MP4(Compact Video)")
+            print(Fore.BLUE + Style.BRIGHT + "[6]MP4(No Audio)")
+            print(Fore.RED + "[7]Back to Menu")
+            choice_a = input("Choose(1-7): ")
+            if choice_a == "6":
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestvideo[ext=mp4]/bestvideo",
                     "outtmpl": "%(title)s.%(ext)s",
                     "restrictfilenames": True,
                     "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "http_headers": {
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36",
-                        "Accept-Language": "en-US,en;q=0.9",
-                        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                        "Referer": "https://www.youtube.com/",
-                    },
-                    "geo_bypass": True,
+                    "cookiesfrombrowser": (browser,),
                     "retries": 10,
-                    "continuedl": True,
-                    "nocheckcertificate": True,
                 }
     
             elif choice_a == "2":
                 url = input("Enter the URL: ")
                 ydl_opts = {
-                    "format": "bestaudio",
-                    "outtmpl": "%(title)s.mp3",
+                    "format": "bestaudio[ext=m4a]",
+                    "outtmpl": "%(title)s.%(ext)s",
                     "restrictfilenames": True,
                     "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "http_headers": {
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36",
-                        "Accept-Language": "en-US,en;q=0.9",
-                        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                        "Referer": "https://www.youtube.com/",
-                    },
-                    "geo_bypass": True,
+                    "cookiesfrombrowser": (browser,),
                     "retries": 10,
-                    "continuedl": True,
-                    "nocheckcertificate": True,
                     "postprocessors": [{
                         "key": "FFmpegExtractAudio",
                         "preferredcodec": "mp3",
@@ -168,27 +230,65 @@ while True:
 
                 }
             elif choice_a == "3":
+                url = input("Enter the URL: ")
+                ydl_opts = {
+                    "format": "bestaudio[ext=m4a]",
+                    "outtmpl": "%(title)s.%(ext)s",
+                    "restrictfilenames": True,
+                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
+                    "cookiesfrombrowser": (browser,),
+                    "retries": 10,
+                    "postprocessors": [{
+                        "key": "FFmpegExtractAudio",
+                        "preferredcodec": "wav",
+                        "preferredquality": "192",
+                    }],
+                    "ffmpeg_location": ffmpeg_bin,
+
+                }
+            elif choice_a == "4":
+                url = input("Enter the URL: ")
+                ydl_opts = {
+                    "format": "bestaudio[ext=m4a]",
+                    "outtmpl": "%(title)s.%(ext)s",
+                    "restrictfilenames": True,
+                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
+                    "cookiesfrombrowser": (browser,),
+                    "retries": 10,
+                    "postprocessors": [{
+                        "key": "FFmpegExtractAudio",
+                        "preferredcodec": "flac",
+                        "preferredquality": "300",
+                    }],
+                    "ffmpeg_location": ffmpeg_bin,
+
+                }
+            elif choice_a == "1":
                 url = input("Enter the URL:")
                 ydl_opts = {
-                    "format": "bestvideo+bestaudio/best",
+                    "format": "bestvideo[height<=2160]+bestaudio[ext=m4a]/best",
                     "outtmpl": "%(title)s.%(ext)s",
                     "restrictfilenames": True,
                     "merge_output_format": "mp4",
                     "ffmpeg_location": ffmpeg_bin,
                     "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "http_headers": {
-                        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0 Safari/537.36",
-                        "Accept-Language": "en-US,en;q=0.9",
-                        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                        "Referer": "https://www.youtube.com/",
-                    },
-                    "geo_bypass": True,
+                    "cookiesfrombrowser": (browser,),
                     "retries": 10,
-                    "continuedl": True,
-                    "nocheckcertificate": True,
+                }
+            elif choice_a == "5":
+                url = input("Enter the URL:")
+                ydl_opts = {
+                    "format": "bestvideo[height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]",
+                    "outtmpl": "%(title)s.%(ext)s",
+                    "restrictfilenames": True,
+                    "merge_output_format": "mp4",
+                    "ffmpeg_location": ffmpeg_bin,
+                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
+                    "cookiesfrombrowser": (browser,),
+                    "retries": 10,
                 }
             
-            elif choice_a == "4":
+            elif choice_a == "7":
                 break
             
             else:
