@@ -100,7 +100,7 @@ except:
 while True:
     os.system("cls")
     logof()
-    print(Fore.BLUE + "MediaZipX 1.3")
+    print(Fore.BLUE + "MediaZipX 1.3.5")
     print("by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
     print("https://github.com/R-D-R248")
     print(Fore.WHITE + Style.DIM + "-"*96)
@@ -110,18 +110,18 @@ while True:
     print(Fore.WHITE + Style.DIM + "-"*96)
     print(Fore.BLUE + Style.BRIGHT + "[1]Download from YouTube")
     print(Fore.BLUE + Style.BRIGHT + "[2]About")
-    print(Fore.RED + "[3]Options")
+    print(Fore.BLUE + "[3]Options")
     print(Fore.RED + "[4]Exit")
     choice = input("Choose(1-3): ")
     if choice == "4":
         sys.exit()
     elif choice == "3":
-        os.system("cls")
-        print(Style.BRIGHT + "Options")
-        print("[1]Choose Browser(for Anti-Bot Error Prevention)")
-        print("[2]Exit to Main Menu")
-        choice_a = input("Choose(1-7): ")
         while True:
+            os.system("cls")
+            print(Style.BRIGHT + "Options")
+            print("[1]Choose Browser(for Anti-Bot Error Prevention)")
+            print("[2]Exit to Main Menu")
+            choice_a = input("Choose(1-2): ")
             if choice_a == "1":
                 while True:
                     print(Style.BRIGHT + "Browsers")
@@ -161,13 +161,14 @@ while True:
                         print(input("Press Enter to Return to Options"))
                         os.system("cls")
                         continue
+                    browser = text_to_save
                     with open(data_file, "w", encoding="utf-8") as f:
                         f.write(text_to_save)
                     print("Your Browser Option has been Saved.\nClick Enter to Return to Options")
                     print(input())
                     os.system("cls")
-                    break
-                
+                    break                        
+            
             elif choice_a == "2":
                 break
             
