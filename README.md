@@ -26,6 +26,8 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 - Added MP4 (No Audio / Video Only) option
 - Added Browser selection system to prevent YouTube anti-bot errors using cookies
 - Browser choice is now saved and reused automatically
+### v1.3.5
+- Fixed A bug Where Browser Options would loop forever
 
 ## Installation
 1. Download the Application
