@@ -1,11 +1,10 @@
 #Contributors:
 #CodeR-D-R(R-D-R248)
+version = "MediaZipX 1.4"
 from colorama import Fore, Back, Style, init
 import os
 from yt_dlp import YoutubeDL
 from yt_dlp.utils import DownloadError
-import ffmpeg
-import re
 import zipfile
 import requests
 import sys
@@ -52,6 +51,20 @@ directory_path="C:\\ffmpeg"
 if os.path.isdir(directory_path):
     pass
 else:
+    logof()
+    print(f"{version}")
+    print("Installer")
+    print("You must Have Stable Network")
+    print("Install Dependecies? Type YES to Confirm Install")
+    inst_input = input("")
+    if inst_input != "YES":
+        logof()
+        print(f"{version}")
+        print("Installer")
+        print("Installation Cancelled by User")
+        print(input("Click Enter to Exit Setup"))
+        sys.exit()
+        
     url = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
     save_folder = r"C:\ffmpeg"
     save_path = os.path.join(save_folder, "ffmpeg.zip")
@@ -77,7 +90,48 @@ else:
             os.environ["PATH"] += os.pathsep + ffmpeg_bin
             break
     os.remove(save_path)
-    
+
+    while True:
+        print(Style.BRIGHT + "Browsers")
+        print("Please Select the Browser You use.")
+        print(Fore.BLUE + Style.BRIGHT + "[1]Chrome")
+        print(Fore.BLUE + Style.BRIGHT + "[2]Edge")
+        print(Fore.BLUE + Style.BRIGHT + "[3]Opera")
+        print(Fore.BLUE + Style.BRIGHT + "[4]Firefox")
+        print(Fore.BLUE + Style.BRIGHT + "[5]Brave")
+        print(Fore.BLUE + Style.BRIGHT + "[6]Chromium")
+        print(Fore.BLUE + Style.BRIGHT + "[7]Vivaldi")
+        choice_a = input("Choose(1-7): ")
+        browser = choice_a
+        app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
+        os.makedirs(app_folder, exist_ok=True)
+        data_file = os.path.join(app_folder, "browser.txt")
+        if browser == "6":
+            text_to_save = "chromium"
+        elif browser == "1":
+            text_to_save = "chrome"
+        elif browser == "2":
+            text_to_save = "edge"
+        elif browser == "3":
+            text_to_save = "opera"
+        elif browser == "4":
+            text_to_save = "firefox"
+        elif browser == "5":
+            text_to_save = "brave"
+        elif browser == "7":
+            text_to_save = "vivaldi"
+
+        else:
+            os.system("cls")
+            print(Fore.RED + Style.BRIGHT + "Invalid Choice")
+            print(input("Press Enter to Return to Options"))
+            os.system("cls")
+            continue
+        browser = text_to_save
+        with open(data_file, "w", encoding="utf-8") as f:
+            f.write(text_to_save)
+        print("Your Browser Option has been Saved.")
+        break
     print(input("Click Enter to finish Setup"))
     
 def get_ffmpeg_bin(path="C:\\ffmpeg"):
@@ -88,7 +142,7 @@ def get_ffmpeg_bin(path="C:\\ffmpeg"):
     return path
 
 ffmpeg_bin = get_ffmpeg_bin()
-
+app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
 try:
     app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
     data_file = os.path.join(app_folder, "browser.txt")
@@ -100,7 +154,7 @@ except:
 while True:
     os.system("cls")
     logof()
-    print(Fore.BLUE + "MediaZipX 1.3.5")
+    print(Fore.BLUE + f"{version}")
     print("by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
     print("https://github.com/R-D-R248")
     print(Fore.WHITE + Style.DIM + "-"*96)
@@ -112,7 +166,7 @@ while True:
     print(Fore.BLUE + Style.BRIGHT + "[2]About")
     print(Fore.BLUE + "[3]Options")
     print(Fore.RED + "[4]Exit")
-    choice = input("Choose(1-3): ")
+    choice = input("Choose(1-4): ")
     if choice == "4":
         sys.exit()
     elif choice == "3":
@@ -120,8 +174,9 @@ while True:
             os.system("cls")
             print(Style.BRIGHT + "Options")
             print("[1]Choose Browser(for Anti-Bot Error Prevention)")
-            print("[2]Exit to Main Menu")
-            choice_a = input("Choose(1-2): ")
+            print("[2]Uninstall MediaZipX")
+            print("[3]Exit to Main Menu")
+            choice_a = input("Choose(1-3): ")
             if choice_a == "1":
                 while True:
                     print(Style.BRIGHT + "Browsers")
@@ -158,7 +213,7 @@ while True:
                     else:
                         os.system("cls")
                         print(Fore.RED + Style.BRIGHT + "Invalid Choice")
-                        print(input("Press Enter to Return to Options"))
+                        print(input("Press Enter to Choose Browser"))
                         os.system("cls")
                         continue
                     browser = text_to_save
@@ -168,8 +223,20 @@ while True:
                     print(input())
                     os.system("cls")
                     break                        
-            
             elif choice_a == "2":
+                print("Uninstall MediaZipX")
+                confirm = input("Type YES to confirm uninstall: ")
+                if confirm != "YES":
+                    print("Uninstall Cancelled.")
+                    input("Press Enter to return.")
+                    break
+                
+                print("Uninstalling ffmpeg")
+                os.system("rmdir /s /q \"C:\\ffmpeg\"")
+                print("Uninstalling MediaZipX")
+                os.system(f"rmdir /s /q \"{app_folder}\"")
+                print("MediaZipX has been successfully been uninstalled.")            
+            elif choice_a == "3":
                 break
             
             else:
