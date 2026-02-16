@@ -78,6 +78,10 @@ You are free to:
 
 For more details, visit the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
+## Upcoming Features in v1.5
+- Add a Setup.exe which can be used to install the program
+- More in the Options Menu
+- And Much More!
 ## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests. Please make sure to follow the licensing terms when contributing, and credit the original author where applicable.
