@@ -4,16 +4,17 @@
 MediaZipX is a Python-based Media Downloader designed to make Downloading videos and audio easy and accessible.
 
 > [!WARNING]
+> v1.3 and above may not work due to cookies issue
+> If it doesn't work, please use v1.2
+
+
+> [!WARNING]
 > Some antivirus programs may produce false positives due to MediaZipX being packaged as a standalone executable.
 > The full source code is publicly available for transparency and independent review.
 
 > [!NOTE]
 > If preferred, you may build the executable yourself directly from the source code.
 > This requires Python 3.11 and installing the required dependencies using pip.
-
-> [!WARNING]
-> v1.3 may not work due to cookies issue
-> If it doesn't work, please use v1.2
 
 ## Features
 
