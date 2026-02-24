@@ -11,6 +11,9 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 > If preferred, you may build the executable yourself directly from the source code.
 > This requires Python 3.11 and installing the required dependencies using pip.
 
+> [!WARNING]
+> v1.3 may not work due to cookies issue
+> If it doesn't work, please use v1.2
 
 ## Features
 
