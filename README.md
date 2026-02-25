@@ -82,7 +82,7 @@ You are free to:
 
 For more details, visit the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-## Upcoming Features in v1.5
+## Upcoming Features in v1.6
 - Add a Setup.exe which can be used to install the program
 - More in the Options Menu
 - And Much More!
