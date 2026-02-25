@@ -1,6 +1,10 @@
 #Contributors:
-#CodeR-D-R(R-D-R248)
-version = "MediaZipX 1.4"
+#CodeR-D-R(R-D-R248): https://github.com/R-D-R248
+
+#Special Thanks to:
+#thegamerprogrammer: https://github.com/Thegamerprogrammer
+
+version = "MediaZipX 1.5"
 from colorama import Fore, Back, Style, init
 import os
 from yt_dlp import YoutubeDL
@@ -8,6 +12,21 @@ from yt_dlp.utils import DownloadError
 import zipfile
 import requests
 import sys
+import random
+
+#These are the User Agents or Fake Cookies
+#This Idea has been implemented thanks to https://github.com/Thegamerprogrammer/CrystalMedia
+fake_cookies = [
+    # Windows 10
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/145.0.0.0 Safari/537.36",
+    # macOS
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Safari/605.1.15",
+    # Linux
+    "Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:146.0) Gecko/20100101 Firefox/146.0",
+]
+
+#Download Path
+downloads_path = os.path.join(os.path.expanduser("~"), "Downloads")
 
 init(autoreset=True)
 
@@ -91,47 +110,6 @@ else:
             break
     os.remove(save_path)
 
-    while True:
-        print(Style.BRIGHT + "Browsers")
-        print("Please Select the Browser You use.")
-        print(Fore.BLUE + Style.BRIGHT + "[1]Chrome")
-        print(Fore.BLUE + Style.BRIGHT + "[2]Edge")
-        print(Fore.BLUE + Style.BRIGHT + "[3]Opera")
-        print(Fore.BLUE + Style.BRIGHT + "[4]Firefox")
-        print(Fore.BLUE + Style.BRIGHT + "[5]Brave")
-        print(Fore.BLUE + Style.BRIGHT + "[6]Chromium")
-        print(Fore.BLUE + Style.BRIGHT + "[7]Vivaldi")
-        choice_a = input("Choose(1-7): ")
-        browser = choice_a
-        app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
-        os.makedirs(app_folder, exist_ok=True)
-        data_file = os.path.join(app_folder, "browser.txt")
-        if browser == "6":
-            text_to_save = "chromium"
-        elif browser == "1":
-            text_to_save = "chrome"
-        elif browser == "2":
-            text_to_save = "edge"
-        elif browser == "3":
-            text_to_save = "opera"
-        elif browser == "4":
-            text_to_save = "firefox"
-        elif browser == "5":
-            text_to_save = "brave"
-        elif browser == "7":
-            text_to_save = "vivaldi"
-
-        else:
-            os.system("cls")
-            print(Fore.RED + Style.BRIGHT + "Invalid Choice")
-            print(input("Press Enter to Return to Options"))
-            os.system("cls")
-            continue
-        browser = text_to_save
-        with open(data_file, "w", encoding="utf-8") as f:
-            f.write(text_to_save)
-        print("Your Browser Option has been Saved.")
-        break
     print(input("Click Enter to finish Setup"))
     
 def get_ffmpeg_bin(path="C:\\ffmpeg"):
@@ -142,14 +120,10 @@ def get_ffmpeg_bin(path="C:\\ffmpeg"):
     return path
 
 ffmpeg_bin = get_ffmpeg_bin()
-app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
-try:
-    app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
-    data_file = os.path.join(app_folder, "browser.txt")
-    with open(data_file, "r") as f:
-        browser = f.read().strip()
-except:
-    browser = "edge"
+
+def progress_hook(d):
+    if d['status'] == 'downloading':
+        print(f"\rProgress: {d.get('_percent_str','0%')}", end="")
 
 while True:
     os.system("cls")
@@ -173,57 +147,10 @@ while True:
         while True:
             os.system("cls")
             print(Style.BRIGHT + "Options")
-            print("[1]Choose Browser(for Anti-Bot Error Prevention)")
-            print("[2]Uninstall MediaZipX")
-            print("[3]Exit to Main Menu")
-            choice_a = input("Choose(1-3): ")
+            print("[1]Uninstall MediaZipX")
+            print("[2]Exit to Main Menu")
+            choice_a = input("Choose(1-2): ")                 
             if choice_a == "1":
-                while True:
-                    print(Style.BRIGHT + "Browsers")
-                    print("Please Select the Browser You use.")
-                    print(Fore.BLUE + Style.BRIGHT + "[1]Chrome")
-                    print(Fore.BLUE + Style.BRIGHT + "[2]Edge")
-                    print(Fore.BLUE + Style.BRIGHT + "[3]Opera")
-                    print(Fore.BLUE + Style.BRIGHT + "[4]Firefox")
-                    print(Fore.BLUE + Style.BRIGHT + "[5]Brave")
-                    print(Fore.BLUE + Style.BRIGHT + "[6]Chromium")
-                    print(Fore.BLUE + Style.BRIGHT + "[7]Vivaldi")
-                    print(Fore.RED + "[8]Exit Browser Select")
-                    choice_a = input("Choose(1-8): ")
-                    browser = choice_a
-                    app_folder = os.path.join(os.getenv("APPDATA"), "MediaZipX")
-                    os.makedirs(app_folder, exist_ok=True)
-                    data_file = os.path.join(app_folder, "browser.txt")
-                    if browser == "6":
-                        text_to_save = "chromium"
-                    elif browser == "1":
-                        text_to_save = "chrome"
-                    elif browser == "2":
-                        text_to_save = "edge"
-                    elif browser == "3":
-                        text_to_save = "opera"
-                    elif browser == "4":
-                        text_to_save = "firefox"
-                    elif browser == "5":
-                        text_to_save = "brave"
-                    elif browser == "7":
-                        text_to_save = "vivaldi"
-                    elif browser == "8":
-                        break
-                    else:
-                        os.system("cls")
-                        print(Fore.RED + Style.BRIGHT + "Invalid Choice")
-                        print(input("Press Enter to Choose Browser"))
-                        os.system("cls")
-                        continue
-                    browser = text_to_save
-                    with open(data_file, "w", encoding="utf-8") as f:
-                        f.write(text_to_save)
-                    print("Your Browser Option has been Saved.\nClick Enter to Return to Options")
-                    print(input())
-                    os.system("cls")
-                    break                        
-            elif choice_a == "2":
                 print("Uninstall MediaZipX")
                 confirm = input("Type YES to confirm uninstall: ")
                 if confirm != "YES":
@@ -234,9 +161,8 @@ while True:
                 print("Uninstalling ffmpeg")
                 os.system("rmdir /s /q \"C:\\ffmpeg\"")
                 print("Uninstalling MediaZipX")
-                os.system(f"rmdir /s /q \"{app_folder}\"")
                 print("MediaZipX has been successfully been uninstalled.")            
-            elif choice_a == "3":
+            elif choice_a == "2":
                 break
             
             else:
@@ -269,25 +195,26 @@ while True:
             print(Fore.BLUE + Style.BRIGHT + "[6]MP4(No Audio)")
             print(Fore.RED + "[7]Back to Menu")
             choice_a = input("Choose(1-7): ")
+            
+            agent = random.choice(fake_cookies)
             if choice_a == "6":
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestvideo[ext=mp4]/bestvideo",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": os.path.join(downloads_path, "%(title)s.%(ext)s"),
                     "restrictfilenames": True,
-                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "cookiesfrombrowser": (browser,),
+                    "progress_hooks": [progress_hook],
                     "retries": 10,
+                    "http_headers": {"User-Agent": agent},
                 }
     
             elif choice_a == "2":
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestaudio[ext=m4a]",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": os.path.join(downloads_path, "%(title)s.%(ext)s"),
                     "restrictfilenames": True,
-                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "cookiesfrombrowser": (browser,),
+                    "progress_hooks": [progress_hook],
                     "retries": 10,
                     "postprocessors": [{
                         "key": "FFmpegExtractAudio",
@@ -295,16 +222,16 @@ while True:
                         "preferredquality": "192",
                     }],
                     "ffmpeg_location": ffmpeg_bin,
+                    "http_headers": {"User-Agent": agent},
 
                 }
             elif choice_a == "3":
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestaudio[ext=m4a]",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": os.path.join(downloads_path, "%(title)s.%(ext)s"),
                     "restrictfilenames": True,
-                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "cookiesfrombrowser": (browser,),
+                    "progress_hooks": [progress_hook],
                     "retries": 10,
                     "postprocessors": [{
                         "key": "FFmpegExtractAudio",
@@ -312,16 +239,17 @@ while True:
                         "preferredquality": "192",
                     }],
                     "ffmpeg_location": ffmpeg_bin,
+                    "http_headers": {"User-Agent": agent},
 
                 }
             elif choice_a == "4":
                 url = input("Enter the URL: ")
                 ydl_opts = {
                     "format": "bestaudio[ext=m4a]",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": os.path.join(downloads_path, "%(title)s.%(ext)s"),
                     "restrictfilenames": True,
-                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "cookiesfrombrowser": (browser,),
+                    "progress_hooks": [progress_hook],
+                    
                     "retries": 10,
                     "postprocessors": [{
                         "key": "FFmpegExtractAudio",
@@ -329,30 +257,31 @@ while True:
                         "preferredquality": "300",
                     }],
                     "ffmpeg_location": ffmpeg_bin,
+                    "http_headers": {"User-Agent": agent},
 
                 }
             elif choice_a == "1":
                 url = input("Enter the URL:")
                 ydl_opts = {
                     "format": "bestvideo[height<=2160]+bestaudio[ext=m4a]/best",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": os.path.join(downloads_path, "%(title)s.%(ext)s"),
                     "restrictfilenames": True,
                     "merge_output_format": "mp4",
                     "ffmpeg_location": ffmpeg_bin,
-                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "cookiesfrombrowser": (browser,),
+                    "progress_hooks": [progress_hook],
+                    "http_headers": {"User-Agent": agent},
                     "retries": 10,
                 }
             elif choice_a == "5":
                 url = input("Enter the URL:")
                 ydl_opts = {
                     "format": "bestvideo[height<=720]+bestaudio[ext=m4a]/best[ext=mp4][height<=720]",
-                    "outtmpl": "%(title)s.%(ext)s",
+                    "outtmpl": os.path.join(downloads_path, "%(title)s.%(ext)s"),
                     "restrictfilenames": True,
                     "merge_output_format": "mp4",
                     "ffmpeg_location": ffmpeg_bin,
-                    "progress_hooks": [lambda d: print(f"Progress: {d['_percent_str']}") if d['status']=='downloading' else None],
-                    "cookiesfrombrowser": (browser,),
+                    "progress_hooks": [progress_hook],
+                    "http_headers": {"User-Agent": agent},
                     "retries": 10,
                 }
             
@@ -373,9 +302,11 @@ while True:
                 print("Download Success")
             except DownloadError as e:
                 os.system("cls")
+                print("An Error Has occured, you can report this at https://github.com/R-D-R248/MediaZipX/issues")
                 print(f"Download failed: {e}")
             except Exception as e:
                 os.system("cls")
+                print("An Error Has occured, you can report this at https://github.com/R-D-R248/MediaZipX/issues")
                 print(f"An error occurred: {e}")
 
 
