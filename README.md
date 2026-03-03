@@ -7,14 +7,9 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 > v1.3-v1.4 may not work due to cookies issue. 
 > If it doesn't work, please use v1.2 or v1.5+
 
-
-> [!WARNING]
-> Some antivirus programs may produce false positives due to MediaZipX being packaged as a standalone executable.
-> The full source code is publicly available for transparency and independent review.
-
 > [!NOTE]
-> If preferred, you may build the executable yourself directly from the source code.
-> This requires Python 3.11 and installing the required dependencies using pip.
+> Versions before v1.6 could be marked as a trojan in an AntiVirus.
+> It is Preferred to use v1.6+ as it is more User Friendly.
 
 ## Features
 
@@ -48,6 +43,9 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 - Removed Browser Cookies Options
 - Fixed A bug from v1.3-v1.4
 - Fixed the Progress Hooks
+### v1.6
+- Removed Uninstall Option in the Python File
+- Made an Proper Setup and Uninstaller
 ## Installation
 1. Download the Application
 2. Launch the Application and Wait for the Setup to Complete Configuring FFmpeg on your System
@@ -86,9 +84,8 @@ You are free to:
 
 For more details, visit the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-## Upcoming Features in v1.6
-- Add a Setup.exe which can be used to install the program
-- More in the Options Menu
+## Upcoming Features in v1.7
+- Linux Support
 - And Much More!
 ## Contributing
 
