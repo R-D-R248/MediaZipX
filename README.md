@@ -94,3 +94,6 @@ Contributions are welcome! Feel free to open issues or submit pull requests. Ple
 ## Acknowledgments
 
 Thank you to all the contributors and libraries that have helped make MediaZipX possible.
+Especially yt-dlp and ffmpeg.
+
+
