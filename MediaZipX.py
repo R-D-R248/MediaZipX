@@ -3,8 +3,8 @@
 
 #Special Thanks to:
 #thegamerprogrammer: https://github.com/Thegamerprogrammer
-
-version = "MediaZipX 1.5"
+import time
+version = "MediaZipX 1.6"
 from colorama import Fore, Back, Style, init
 import os
 from yt_dlp import YoutubeDL
@@ -13,7 +13,8 @@ import zipfile
 import requests
 import sys
 import random
-
+import webbrowser
+import keyboard
 #These are the User Agents or Fake Cookies
 #This Idea has been implemented thanks to https://github.com/Thegamerprogrammer/CrystalMedia
 fake_cookies = [
@@ -65,61 +66,15 @@ def logof():
         print()
         
     return None
-
-directory_path="C:\\ffmpeg"
-if os.path.isdir(directory_path):
-    pass
-else:
-    logof()
-    print(f"{version}")
-    print("Installer")
-    print("You must Have Stable Network")
-    print("Install Dependecies? Type YES to Confirm Install")
-    inst_input = input("")
-    if inst_input != "YES":
-        logof()
-        print(f"{version}")
-        print("Installer")
-        print("Installation Cancelled by User")
-        print(input("Click Enter to Exit Setup"))
-        sys.exit()
-        
-    url = "https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-master-latest-win64-gpl-shared.zip"
-    save_folder = r"C:\ffmpeg"
-    save_path = os.path.join(save_folder, "ffmpeg.zip")
-
-    os.makedirs(save_folder, exist_ok=True)
-
-    print("Downloading FFmpeg... This may take a few minutes.")
-
-    response = requests.get(url, stream=True)
-
-    with open(save_path, "wb") as f:
-        for chunk in response.iter_content(chunk_size=8192):
-            f.write(chunk)
-
-    zip_path = r"C:\ffmpeg\ffmpeg.zip"
-    extract_to = r"C:\ffmpeg"
-
-    with zipfile.ZipFile(zip_path, 'r') as z:
-        z.extractall(extract_to)
-    for name in os.listdir(save_folder):
-        if name.startswith("ffmpeg"):
-            ffmpeg_bin = os.path.join(save_folder, name, "bin")
-            os.environ["PATH"] += os.pathsep + ffmpeg_bin
-            break
-    os.remove(save_path)
-
-    print(input("Click Enter to finish Setup"))
     
-def get_ffmpeg_bin(path="C:\\ffmpeg"):
+def get_ffmpeg_bin(path):
     for name in os.listdir(path):
         full_path = os.path.join(path, name, "bin")
         if os.path.isdir(full_path):
             return full_path
     return path
 
-ffmpeg_bin = get_ffmpeg_bin()
+ffmpeg_bin = get_ffmpeg_bin(path=os.path.join(os.path.dirname(os.path.abspath(__file__)), "ffmpeg"))
 
 def progress_hook(d):
     if d['status'] == 'downloading':
@@ -127,6 +82,7 @@ def progress_hook(d):
 
 while True:
     os.system("cls")
+    time.sleep(0.1)
     logof()
     print(Fore.BLUE + f"{version}")
     print("by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
@@ -140,28 +96,22 @@ while True:
     print(Fore.BLUE + Style.BRIGHT + "[2]About")
     print(Fore.BLUE + "[3]Options")
     print(Fore.RED + "[4]Exit")
-    choice = input("Choose(1-4): ")
+    choice = keyboard.read_key()
     if choice == "4":
         sys.exit()
     elif choice == "3":
+        time.sleep(0.1)
         while True:
             os.system("cls")
             print(Style.BRIGHT + "Options")
-            print("[1]Uninstall MediaZipX")
+            print("[1]Website")
             print("[2]Exit to Main Menu")
-            choice_a = input("Choose(1-2): ")                 
+            choice_a = keyboard.read_key()                 
             if choice_a == "1":
-                print("Uninstall MediaZipX")
-                confirm = input("Type YES to confirm uninstall: ")
-                if confirm != "YES":
-                    print("Uninstall Cancelled.")
-                    input("Press Enter to return.")
-                    break
-                
-                print("Uninstalling ffmpeg")
-                os.system("rmdir /s /q \"C:\\ffmpeg\"")
-                print("Uninstalling MediaZipX")
-                print("MediaZipX has been successfully been uninstalled.")            
+                os.system("cls")
+                webbrowser.open(url)
+                print("Opening Website\nClick Enter to Exit")
+                print(input())
             elif choice_a == "2":
                 break
             
@@ -172,6 +122,7 @@ while True:
                 os.system("cls")
                 continue
     elif choice == "2":
+        time.sleep(0.1)
         os.system("cls")
         print(Style.BRIGHT + "About MediaZipX")
         print("MediaZipX is a Python-based Media Downloader designed to make Downloading videos and audio easy and accessible.")
@@ -184,6 +135,7 @@ while True:
         os.system("cls")
         continue
     elif choice == "1":
+        time.sleep(0.1)
         while True:
             os.system("cls")
             print(Fore.RED + Style.BRIGHT + "YouTube" + Fore.WHITE + " Downloader")
@@ -194,7 +146,7 @@ while True:
             print(Fore.BLUE + Style.BRIGHT + "[5]MP4(Compact Video)")
             print(Fore.BLUE + Style.BRIGHT + "[6]MP4(No Audio)")
             print(Fore.RED + "[7]Back to Menu")
-            choice_a = input("Choose(1-7): ")
+            choice_a = keyboard.read_key()
             
             agent = random.choice(fake_cookies)
             if choice_a == "6":
@@ -315,6 +267,7 @@ while True:
             
 
     else:
+        time.sleep(0.1)
         os.system("cls")
         print(Fore.RED + Style.BRIGHT + "Invalid Choice")
         print(input("Press Enter to Return to Menu"))
