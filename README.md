@@ -87,8 +87,9 @@ You are free to:
 
 For more details, visit the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-## Upcoming Features in v1.7
+## Upcoming Features in V2
 - Linux Support
+- Expand to become The Ultimate Media Utility
 - And Much More!
 ## Contributing
 
