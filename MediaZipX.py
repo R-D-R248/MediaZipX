@@ -82,7 +82,7 @@ def progress_hook(d):
 
 while True:
     os.system("cls")
-    time.sleep(0.1)
+    time.sleep(0.5)
     logof()
     print(Fore.BLUE + f"{version}")
     print("by Code" + Fore.RED + "R" + Fore.WHITE + "-" + Fore.BLUE + "D" + Fore.WHITE + "-" + Fore.RED + "R")
@@ -94,13 +94,13 @@ while True:
     print(Fore.WHITE + Style.DIM + "-"*96)
     print(Fore.BLUE + Style.BRIGHT + "[1]Download from YouTube")
     print(Fore.BLUE + Style.BRIGHT + "[2]About")
-    print(Fore.BLUE + "[3]Options")
+    print(Fore.BLUE + "[3]Troubleshoorting")
     print(Fore.RED + "[4]Exit")
     choice = keyboard.read_key()
     if choice == "4":
         sys.exit()
     elif choice == "3":
-        time.sleep(0.1)
+        time.sleep(0.5)
         while True:
             os.system("cls")
             print(Style.BRIGHT + "Options")
@@ -122,7 +122,7 @@ while True:
                 os.system("cls")
                 continue
     elif choice == "2":
-        time.sleep(0.1)
+        time.sleep(0.5)
         os.system("cls")
         print(Style.BRIGHT + "About MediaZipX")
         print("MediaZipX is a Python-based Media Downloader designed to make Downloading videos and audio easy and accessible.")
@@ -135,7 +135,7 @@ while True:
         os.system("cls")
         continue
     elif choice == "1":
-        time.sleep(0.1)
+        time.sleep(0.5)
         while True:
             os.system("cls")
             print(Fore.RED + Style.BRIGHT + "YouTube" + Fore.WHITE + " Downloader")
@@ -267,7 +267,7 @@ while True:
             
 
     else:
-        time.sleep(0.1)
+        time.sleep(0.5)
         os.system("cls")
         print(Fore.RED + Style.BRIGHT + "Invalid Choice")
         print(input("Press Enter to Return to Menu"))
