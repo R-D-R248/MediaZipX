@@ -4,7 +4,7 @@
 #Special Thanks to:
 #thegamerprogrammer: https://github.com/Thegamerprogrammer
 import time
-version = "MediaZipX 1.6"
+version = "MediaZipX 1.6.1"
 from colorama import Fore, Back, Style, init
 import os
 from yt_dlp import YoutubeDL
@@ -104,13 +104,13 @@ while True:
         while True:
             os.system("cls")
             print(Style.BRIGHT + "Options")
-            print("[1]Website")
+            print("[1]Report an Error or Suggest a Feature")
             print("[2]Exit to Main Menu")
             choice_a = keyboard.read_key()                 
             if choice_a == "1":
                 os.system("cls")
-                webbrowser.open(url)
-                print("Opening Website\nClick Enter to Exit")
+                webbrowser.open("https://github.com/R-D-R248/MediaZipX/issues")
+                print("Check the New Browser Window\nClick Enter to Exit")
                 print(input())
             elif choice_a == "2":
                 break
