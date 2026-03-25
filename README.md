@@ -9,6 +9,7 @@ MediaZipX is a Python-based Media Downloader designed to make Downloading videos
 
 > [!NOTE]
 > Versions before v1.6 could be marked as a trojan in an AntiVirus.
+> Versions v1.6+ Portable could be marked as a trojan in an AntiVirus.
 > It is Preferred to use v1.6+ as it is more User Friendly.
 
 ## Features
