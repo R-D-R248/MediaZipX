@@ -3,6 +3,10 @@
 
 MediaZipX is a Python-based Media Downloader designed to make Downloading videos and audio easy and accessible.
 
+> [!NOTE]
+> MediaZipX has been abandoned. Click [Here](https://github.com/R-D-R248/MediaZipX/edit/main/README.md#upcoming-features) to read more...
+
+
 > [!WARNING]
 > v1.3-v1.4 may not work due to cookies issue. 
 > If it doesn't work, please use v1.2 or v1.5+
@@ -88,10 +92,15 @@ You are free to:
 
 For more details, visit the [Creative Commons Attribution-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-sa/4.0/).
 
-## Upcoming Features in V2
-- Linux Support
-- Expand to become The Ultimate Media Utility
-- And Much More!
+## Upcoming Features
+Unfortunately, MediaZipX has been abandoned and no further features are planned.
+
+MediaZipX started as a simple media downloader project and slowly grew over time, gaining additional features such as media conversion and other utilities. However, as the project continued to expand, it became harder to maintain and the original vision became less clear.
+
+After careful consideration, development has officially ended with MediaZipX v1.6.1, which will remain the final public release of the project.
+
+You are welcome to fork this project and create your own media downloader or continue development.
+
 ## Contributing
 
 Contributions are welcome! Feel free to open issues or submit pull requests. Please make sure to follow the licensing terms when contributing, and credit the original author where applicable.
