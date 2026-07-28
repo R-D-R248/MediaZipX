@@ -4,7 +4,7 @@
 MediaZipX is a Python-based Media Downloader designed to make Downloading videos and audio easy and accessible.
 
 > [!NOTE]
-> MediaZipX has been abandoned. Click [Here](https://github.com/R-D-R248/MediaZipX/edit/main/README.md#upcoming-features) to read more...
+> MediaZipX has been abandoned. Click [Here](https://github.com/R-D-R248/MediaZipX/tree/main#upcoming-features) to read more...
 
 
 > [!WARNING]
